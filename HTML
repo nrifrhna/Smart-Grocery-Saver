@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en"><head><base target="_top"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@500;600&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--deep:#386638;--sage:#698869;--mint:#e8f2e8;--mint2:#d1e5d1;--cream:#fafcf9;--ink:#2c3e2c;--but:#fff1b8;--pink:#ff8fb0;--sky:#6fb6f0;--lav:#9a82e8;--peach:#ffa060}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+body{margin:0;font-family:Quicksand,sans-serif;font-weight:600;color:var(--ink);background:linear-gradient(135deg,#e8f2e8,#fdf3f6,#e6f2ff,#e8f2e8);background-size:300% 300%;animation:bg 18s ease infinite;min-height:100vh}
+@keyframes bg{50%{background-position:100% 100%}}
+h1,h2,h3,.fr{font-family:Fredoka,sans-serif;font-weight:600;margin:0}
+#fl{position:fixed;inset:0;overflow:hidden;pointer-events:none;z-index:0}
+#fl span{position:absolute;bottom:-60px;font-size:28px;opacity:.5;animation:rise linear infinite}
+@keyframes rise{to{transform:translateY(-115vh) rotate(360deg)}}
+#app{position:relative;z-index:1;max-width:440px;margin:0 auto;padding:14px 14px 100px}
+section{display:none;animation:in .5s cubic-bezier(.2,.9,.3,1.2)}section.on{display:block}
+@keyframes in{from{opacity:0;transform:translateY(24px) scale(.97)}}
+.card{background:rgba(255,255,255,.72);backdrop-filter:blur(14px);border:1.5px solid rgba(255,255,255,.9);border-radius:1.25rem;box-shadow:0 8px 28px rgba(56,102,56,.13);padding:16px;margin-bottom:14px;border-top:6px solid var(--a,var(--sage));transition:transform .25s}
+.card:hover{transform:translateY(-3px)}
+.hero{text-align:center;background:linear-gradient(135deg,#fff1b8,#ffe0cc,#ffd9e4);border:0;perspective:600px;overflow:hidden;position:relative}
+.hero .m{width:150px;margin:0 auto;animation:bob 3s ease-in-out infinite;filter:drop-shadow(0 10px 10px rgba(0,0,0,.15))}
+@keyframes bob{50%{transform:translateY(-10px) rotate(-3deg)}}
+.eye{animation:blink 4s infinite;transform-origin:center;transform-box:fill-box}
+@keyframes blink{94%,100%{transform:scaleY(1)}97%{transform:scaleY(.1)}}
+.bubble{display:inline-block;background:#fff;border-radius:999px;padding:6px 14px;font-size:.85rem;margin-top:6px;box-shadow:0 3px 10px rgba(0,0,0,.1)}
+.shine{background:linear-gradient(90deg,var(--deep),var(--pink),var(--lav),var(--sky),var(--deep));background-size:300%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:sh 6s linear infinite}
+@keyframes sh{to{background-position:300%}}
+.pc{--a:var(--pink)}.kc{--a:var(--sky)}.sc{--a:var(--lav)}.lc{--a:var(--peach)}
+label{display:block;font-size:.8rem;color:var(--sage);margin:10px 0 3px}
+input,select{width:100%;min-height:46px;border-radius:.9rem;border:2px solid var(--mint2);background:#fff;padding:0 12px;font:inherit;color:var(--ink);transition:.2s}
+input:focus,select:focus{outline:0;border-color:var(--a,var(--sage));box-shadow:0 0 0 4px color-mix(in srgb,var(--a,var(--sage)) 25%,transparent);transform:scale(1.02)}
+input.bad{border-color:#d4574c;animation:sh2 .3s}@keyframes sh2{25%{transform:translateX(-6px)}75%{transform:translateX(6px)}}
+.err{color:#c0463c;font-size:.78rem;min-height:1rem}
+.btn{width:100%;min-height:48px;border:0;border-radius:999px;font:600 1rem Fredoka,sans-serif;color:#fff;background:linear-gradient(135deg,var(--deep),#5a9a5a);box-shadow:0 6px 16px rgba(56,102,56,.3);cursor:pointer;margin-top:10px;transition:.15s;position:relative;overflow:hidden}
+.btn:active{transform:scale(.95)}.btn:hover{filter:brightness(1.08);transform:translateY(-2px)}
+.btn.sm{width:auto;min-height:36px;padding:0 14px;font-size:.85rem;margin:0}.btn.alt{background:var(--but);color:#7a5c00;box-shadow:none}
+.pk{background:linear-gradient(135deg,#ff6b95,var(--pink))}.kk{background:linear-gradient(135deg,#3d96e0,var(--sky))}.ss{background:linear-gradient(135deg,#7a5ce0,var(--lav))}
+.res{text-align:center;margin-top:14px;animation:in .6s}
+.ringwrap{position:relative;width:150px;height:150px;margin:0 auto}
+.ringwrap svg{transform:rotate(-90deg);width:100%}
+.rb{fill:none;stroke:var(--mint2);stroke-width:11}.rf{fill:none;stroke:url(#g);stroke-width:11;stroke-linecap:round;stroke-dasharray:327;stroke-dashoffset:327;transition:stroke-dashoffset 1.6s cubic-bezier(.2,.8,.2,1)}
+.rc{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center}.rc b{font:600 2rem Fredoka}.rc small{color:var(--sage)}
+.big{font:600 2.3rem Fredoka;margin-top:6px;background:linear-gradient(90deg,var(--deep),#e0a800);-webkit-background-clip:text;background-clip:text;color:transparent}
+.stars{font-size:1.5rem;letter-spacing:4px}.stars i{font-style:normal;display:inline-block;opacity:0;animation:pop .5s forwards}
+@keyframes pop{from{transform:scale(0) rotate(-90deg)}to{opacity:1;transform:none}}
+.rows{background:var(--mint);border-radius:1rem;padding:8px 12px;margin:10px 0;text-align:left}
+.rows div{display:flex;justify-content:space-between;padding:3px 0}
+.rcpt{text-align:left;background:#fffdf3;border-radius:6px;padding:12px;font-family:'Courier New',monospace;font-size:.8rem;font-weight:700;position:relative;margin-top:10px;box-shadow:0 4px 12px rgba(0,0,0,.08)}
+.rcpt::after{content:'';position:absolute;left:0;right:0;bottom:-8px;height:8px;background:linear-gradient(-45deg,transparent 6px,#fffdf3 0),linear-gradient(45deg,transparent 6px,#fffdf3 0);background-size:12px 8px}
+.rcpt p{margin:5px 0;opacity:0;transform:translateX(-12px);transition:.5s}.rcpt p.v{opacity:1;transform:none}
+.tip{background:var(--but);color:#7a5c00;border-radius:1rem;padding:10px;margin-top:14px;font-size:.88rem;text-align:left}
+.pills{display:flex;gap:8px;margin-top:10px}.pill{border:0;border-radius:999px;padding:8px 16px;background:#fff;color:var(--lav);font:inherit;cursor:pointer;min-height:38px}.pill.on{background:var(--lav);color:#fff}
+.chip{background:var(--but);color:#7a5c00;border-radius:999px;padding:2px 10px;font-size:.72rem}
+.dc{animation:in .5s backwards}
+details{background:#fff;border-radius:1rem;margin-bottom:10px;padding:12px;box-shadow:0 4px 12px rgba(0,0,0,.06)}summary{font:600 1.05rem Fredoka;cursor:pointer}details p{font-size:.9rem;line-height:1.6;margin:8px 0 0}
+nav{position:fixed;left:50%;transform:translateX(-50%);bottom:max(10px,env(safe-area-inset-bottom));width:min(420px,94vw);display:grid;grid-template-columns:repeat(5,1fr);background:rgba(255,255,255,.85);backdrop-filter:blur(16px);border-radius:999px;padding:6px;box-shadow:0 10px 30px rgba(56,102,56,.25);z-index:20}
+nav button{border:0;background:0;border-radius:999px;min-height:54px;font:600 .66rem Quicksand;color:var(--sage);cursor:pointer;display:flex;flex-direction:column;align-items:center;justify-content:center;transition:.3s}
+nav button span{font-size:1.3rem;transition:.3s}nav button.on{background:var(--mint2);color:var(--deep)}nav button.on span{transform:translateY(-3px) scale(1.25)}
+#cf{position:fixed;inset:0;pointer-events:none;z-index:50}
+#toast{position:fixed;top:16px;left:50%;transform:translate(-50%,-90px);background:var(--deep);color:#fff;border-radius:999px;padding:10px 20px;z-index:60;transition:.5s cubic-bezier(.2,1.4,.4,1)}#toast.on{transform:translate(-50%,0)}
+</style></head><body>
+<div id="fl"></div><canvas id="cf"></canvas><div id="toast"></div>
+<svg width="0" height="0"><defs><linearGradient id="g"><stop offset="0" stop-color="#ff8fb0"/><stop offset=".5" stop-color="#ffd25e"/><stop offset="1" stop-color="#6fd08c"/></linearGradient></defs></svg>
+<div id="app">
+
+<section id="home" class="on">
+ <div class="card hero" id="hero"><svg class="m" viewBox="0 0 200 190"><path d="M50 40Q100-30 150 40" fill="none" stroke="#d49a5e" stroke-width="12" stroke-linecap="round"/><circle cx="80" cy="60" r="24" fill="#f26b6b"/><path d="M118 90L128 30h28l-8 60z" fill="#ffa050"/><path d="M95 50Q85 20 105 15Q115 40 95 50" fill="#78c878"/><path d="M20 78h160l-22 100H42z" fill="#f0c08a" stroke="#c88c50" stroke-width="5"/><rect x="12" y="68" width="176" height="24" rx="12" fill="#e0a86c" stroke="#c88c50" stroke-width="5"/><g class="eye"><circle cx="75" cy="132" r="8" fill="#463434"/><circle cx="125" cy="132" r="8" fill="#463434"/></g><ellipse cx="55" cy="146" rx="11" ry="7" fill="#ff96aa" opacity=".7"/><ellipse cx="145" cy="146" rx="11" ry="7" fill="#ff96aa" opacity=".7"/><path d="M88 144Q100 158 112 144" fill="none" stroke="#463434" stroke-width="4" stroke-linecap="round"/></svg>
+ <h1 class="shine" style="font-size:1.9rem">Smart Grocery Saver</h1><div class="bubble" id="bub">Hi! Let’s find you a bargain ✨</div>
+ <p style="margin:10px 0 0;font-size:.9rem">Turn shelf labels into real savings in Ringgit.</p>
+ <div class="fr" style="margin-top:10px;color:var(--deep)">Total savings explored: <b id="tot" style="font-size:1.4rem">RM 0.00</b></div></div>
+ <div class="card pc" onclick="go('pct')"><h3 style="color:#d03a6a">🏷️ Percentage discount</h3><p>“20% off!” Find the savings, even if the original price is hidden. <small>Percentages, decimals</small></p><button class="btn pk">Open calculator</button></div>
+ <div class="card kc" onclick="go('pack')"><h3 style="color:#2a7fc4">🎁 Buy 1 Free 1 and multi-packs</h3><p>Real price per pack and the unit rate for fair comparisons. <small>Division, ratios, unit rates</small></p><button class="btn kk">Open calculator</button></div>
+ <div class="card sc" onclick="go('samples')"><h3 style="color:#6a4fd0">🧺 Sample comparison</h3><p>Browse Lotus’s style promos and load them into the calculators.</p><button class="btn ss">See samples</button></div>
+</section>
+
+<section id="pct">
+ <div class="card pc"><h2 style="color:#d03a6a">🏷️ Percentage discount</h2>
+ <label>Product name</label><input id="pn" placeholder="e.g. Goodday UHT Milk" enterkeyhint="go">
+ <label>Promotional price (RM)</label><input id="pp" inputmode="decimal" placeholder="5.90"><div class="err" id="ep"></div>
+ <label>Discount rate (%)</label><input id="pr" inputmode="decimal" placeholder="20"><div class="err" id="er"></div>
+ <label>Catalogue original price (RM), optional</label><input id="pc" inputmode="decimal" placeholder="leave blank to estimate"><div class="err" id="ec"></div>
+ <button class="btn pk" id="bp">✨ Calculate (or press Enter)</button><div id="rp"></div></div>
+</section>
+
+<section id="pack">
+ <div class="card kc"><h2 style="color:#2a7fc4">🎁 B1F1 and multi-packs</h2>
+ <label>Product name</label><input id="kn" placeholder="e.g. Milo 1kg">
+ <label>Total promo price paid (RM)</label><input id="kt" inputmode="decimal" placeholder="24.90"><div class="err" id="et"></div>
+ <div style="display:grid;grid-template-columns:1fr 1fr;gap:10px"><div><label>Packs received</label><input id="kk" inputmode="numeric" value="2"><div class="err" id="ek"></div></div><div><label>Quantity per pack</label><input id="kq" inputmode="decimal" placeholder="500"><div class="err" id="eq"></div></div></div>
+ <label>Measurement unit</label><select id="ku"><option>g</option><option>kg</option><option>ml</option><option>L</option><option>pcs</option></select>
+ <button class="btn kk" id="bk">✨ Calculate (or press Enter)</button><div id="rk"></div></div>
+</section>
+
+<section id="samples">
+ <div class="card sc"><h2 style="color:#6a4fd0">🧺 Sample comparison</h2><p style="font-size:.85rem;color:var(--sage)">Practice prices inspired by Lotus’s promos.</p>
+ <div class="pills"><button class="pill on" data-f="all">All</button><button class="pill" data-f="pct">Percentage</button><button class="pill" data-f="pack">B1F1</button></div></div>
+ <div id="dl"></div>
+</section>
+
+<section id="learn">
+ <div class="card lc"><h2 style="color:#c0561c">📖 Math behind the savings</h2></div>
+ <details open><summary>🏷️ Percentages</summary><p>“Percent” means out of 100. Savings = original × rate. 20% off RM 10.00 → 10.00 × 0.20 = RM 2.00, so you pay RM 8.00.</p></details>
+ <details><summary>🔄 Working backwards</summary><p>The promo price is (1 − rate) of the original, so original = promo ÷ (1 − rate). RM 8.00 at 20% → 8.00 ÷ 0.80 = RM 10.00.</p></details>
+ <details><summary>🎁 Multi-packs and division</summary><p>Price per pack = total paid ÷ packs received. RM 24.90 for 2 packs → RM 12.45 each.</p></details>
+ <details><summary>⚖️ Unit rates</summary><p>Same unit, fair comparison: price ÷ quantity. 500 g for RM 6.50 → 6.50 ÷ 500 × 100 = RM 1.30 per 100 g. Remember 1 kg = 1,000 g and 1 L = 1,000 ml.</p></details>
+ <details><summary>½ Fractions and ratios</summary><p>B1F1 is a 1 : 1 ratio of paid to free packs, so half of the packs cost nothing.</p></details>
+</section>
+</div>
+<nav id="nav"></nav>
+
+<script>
+const $=s=>document.querySelector(s),$$=s=>[...document.querySelectorAll(s)];
+const num=v=>/^\d*\.?\d+$/.test(String(v).trim())?parseFloat(v):NaN;
+const rm=n=>'RM '+(Math.round((n+Number.EPSILON)*100)/100).toFixed(2);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const gs=(typeof google!=='undefined'&&google.script)?google.script.run:null;
+let deals=[
+ {id:1,type:'pct',name:'Goodday UHT Milk 1L',promo:'5.90',rate:'20',cat:''},
+ {id:2,type:'pack',name:'Milo 1kg (B1F1)',total:'24.90',packs:'2',qty:'1',unit:'kg'},
+ {id:3,type:'pack',name:'Dairy Champ SCM',total:'6.50',packs:'2',qty:'500',unit:'g'},
+ {id:4,type:'pct',name:'Bawang Kuning 1kg',promo:'3.99',rate:'25',cat:''},
+ {id:5,type:'pct',name:'Romaine Muda',promo:'4.50',rate:'15',cat:'5.30'},
+ {id:6,type:'pack',name:'Lotus’s Adult Wipes',total:'12.90',packs:'2',qty:'80',unit:'pcs'}],last={},filter='all';
+
+/* ---------- maths ---------- */
+function calcPct(o){const e={},p=num(o.promo),r=num(o.rate),c=o.cat===''?null:num(o.cat);
+ if(!(p>0))e.pp='Enter a promo price above 0.';if(!(r>0&&r<100))e.pr='Enter 0.01 to 99.99.';if(c!==null&&!(c>0))e.pc='Blank, or above 0.';
+ if(Object.keys(e).length)return{e};const est=c===null,orig=est?p/(1-r/100):c,save=orig-p;
+ return{e,p,r,est,orig,save,ring:save/orig*100,steps:est?['No catalogue price, so work backwards:','P_orig = P_promo ÷ (1 − rate)',`P_orig = ${p.toFixed(2)} ÷ ${(1-r/100).toFixed(4)} = ${rm(orig)}`,`Savings = ${orig.toFixed(2)} − ${p.toFixed(2)} = ${rm(save)}`]:['Savings = original − promo',`${orig.toFixed(2)} − ${p.toFixed(2)} = ${rm(save)}`,`Real discount = ${save.toFixed(2)} ÷ ${orig.toFixed(2)} × 100 = ${(save/orig*100).toFixed(1)}%`],
+ rows:[['Original'+(est?' (estimated)':''),rm(orig)],['Promo price',rm(p)]],big:save,label:'You save'};}
+function calcPack(o){const e={},t=num(o.total),k=num(o.packs),q=num(o.qty);
+ if(!(t>0))e.et='Enter a price above 0.';if(!(k>=1&&Number.isInteger(k)))e.ek='Whole number, 1 or more.';if(!(q>0))e.eq='Above 0.';
+ if(Object.keys(e).length)return{e};const u=o.unit,tq=k*q,eff=t/k,free=Math.floor(k/2),paid=k-free,save=free*(t/paid);
+ let rate=t/tq,lb='pc',base=tq;if(u==='g'){rate*=100;lb='100g'}else if(u==='kg'){base=tq*1000;rate=t/base*100;lb='100g'}else if(u==='ml'){rate*=100;lb='100ml'}else if(u==='L')lb='L';
+ return{e,save,ring:save+t>0?save/(save+t)*100:0,lb,rate,free,paid,
+ steps:[`Total quantity = ${k} × ${q} ${u} = ${+tq.toFixed(2)} ${u}`,`Price per pack = ${t.toFixed(2)} ÷ ${k} = ${rm(eff)}`,`Free packs = ${free}; savings = ${free} × (${t.toFixed(2)} ÷ ${paid}) = ${rm(save)}`,`Unit rate = ${t.toFixed(2)} ÷ ${+base.toFixed(2)}${lb.startsWith('100')?' × 100':''} = ${rm(rate)} / ${lb}`],
+ rows:[['Total quantity',`${+tq.toFixed(2)} ${u}`],['Price per pack',rm(eff)],['Unit rate',`${rm(rate)} / ${lb}`]],big:save,label:'You save',
+ tip:free?`Pay for ${paid}, get ${free} free: each pack costs ${rm(eff)} instead of ${rm(t/paid)}. Lower RM per ${lb} means better value.`:`Only 1 pack, so compare the unit rate (${rm(rate)} / ${lb}) with other brands.`};}
+
+/* ---------- WOW effects ---------- */
+const cf=$('#cf'),cx=cf.getContext('2d');let parts=[],run=false;
+function resize(){cf.width=innerWidth;cf.height=innerHeight}resize();addEventListener('resize',resize);
+function confetti(x,y){const cols=['#ff8fb0','#ffd25e','#6fd08c','#6fb6f0','#9a82e8','#ffa060'];
+ for(let i=0;i<110;i++){const a=Math.random()*Math.PI*2,v=4+Math.random()*9;parts.push({x,y,vx:Math.cos(a)*v,vy:Math.sin(a)*v-6,r:4+Math.random()*5,c:cols[i%6],rot:Math.random()*6,life:100+Math.random()*40,e:Math.random()<.3})}
+ if(!run){run=true;tick()}}
+function tick(){cx.clearRect(0,0,cf.width,cf.height);parts=parts.filter(p=>p.life>0);
+ parts.forEach(p=>{p.vy+=.3;p.x+=p.vx;p.y+=p.vy;p.vx*=.99;p.rot+=.2;p.life--;cx.save();cx.translate(p.x,p.y);cx.rotate(p.rot);cx.globalAlpha=Math.min(1,p.life/30);cx.fillStyle=p.c;
+ p.e?(cx.beginPath(),cx.arc(0,0,p.r,0,7),cx.fill()):cx.fillRect(-p.r,-p.r/2,p.r*2,p.r);cx.restore()});
+ parts.length?requestAnimationFrame(tick):(run=false,cx.clearRect(0,0,cf.width,cf.height))}
+function countUp(el,to,fmt,ms=1500){const t0=performance.now();(function f(t){const k=Math.min(1,(t-t0)/ms),e=1-Math.pow(1-k,4);el.textContent=fmt(to*e);k<1&&requestAnimationFrame(f)})(t0)}
+function toast(m){const t=$('#toast');t.textContent=m;t.classList.add('on');setTimeout(()=>t.classList.remove('on'),2200)}
+function say(m){$('#bub').textContent=m}
+$('#fl').innerHTML=[...'🍎🥕🥛🍞🧅🥬🍊🍌🧺🍅🥚🧀'].map((e,i)=>`<span style="left:${i*8.5}%;animation-duration:${14+i%5*4}s;animation-delay:-${i*2.3}s;font-size:${22+i%4*8}px">${e}</span>`).join('');
+addEventListener('mousemove',e=>{const h=$('#hero');if(h)h.style.transform=`rotateY(${(e.clientX/innerWidth-.5)*8}deg) rotateX(${(e.clientY/innerHeight-.5)*-6}deg)`});
+
+/* ---------- result panel ---------- */
+function show(id,d,add){
+ const n=Math.min(5,d.ring>=50?5:d.ring>=35?4:d.ring>=20?3:d.ring>=10?2:1);
+ const mood=d.ring>=40?['🤩','WOW! Super saver deal!']:d.ring>=20?['😄','Nice, that’s a solid saving!']:['🙂','A small saving. Compare other brands!'];
+ const el=$('#'+id);el.innerHTML=`<div class="res"><div style="font-size:2.6rem;animation:bob 2s infinite">${mood[0]}</div><div class="fr">${mood[1]}</div>
+ <div class="ringwrap"><svg viewBox="0 0 120 120"><circle class="rb" cx="60" cy="60" r="52"/><circle class="rf" cx="60" cy="60" r="52"/></svg><div class="rc"><b>0%</b><small>off overall</small></div></div>
+ <div class="sub">${d.label}</div><div class="big">RM 0.00</div>
+ <div class="stars">${'⭐'.repeat(n).split('').map((s,i)=>`<i style="animation-delay:${1.2+i*.18}s">${s}</i>`).join('')}</div>
+ <div class="rows">${d.rows.map(r=>`<div><span>${r[0]}</span><b>${r[1]}</b></div>`).join('')}</div>
+ <div class="rcpt"><b>🧾 WORKING IT OUT</b>${d.steps.map(s=>`<p>${esc(s)}</p>`).join('')}</div>
+ ${d.tip?`<div class="tip">💡 ${esc(d.tip)}</div>`:''}<button class="btn alt" id="${id}a">➕ Add to Deals Comparison Example</button></div>`;
+ requestAnimationFrame(()=>requestAnimationFrame(()=>{el.querySelector('.rf').style.strokeDashoffset=327*(1-Math.min(100,d.ring)/100)}));
+ countUp(el.querySelector('.rc b'),d.ring,v=>v.toFixed(0)+'%');countUp(el.querySelector('.big'),d.big,rm);
+ el.querySelectorAll('.rcpt p').forEach((p,i)=>setTimeout(()=>p.classList.add('v'),500+i*450));
+ el.scrollIntoView({behavior:'smooth',block:'center'});
+ if(d.big>0){const r=el.querySelector('.ringwrap').getBoundingClientRect();setTimeout(()=>confetti(r.left+r.width/2,r.top+r.height/2),400)}
+ say(mood[1]);$('#'+id+'a').onclick=add}
+
+/* ---------- calculators ---------- */
+const val=s=>$(s).value;
+function runPct(){const o={name:val('#pn'),promo:val('#pp'),rate:val('#pr'),cat:val('#pc')},r=calcPct(o);
+ ['pp','pr','pc'].forEach(k=>{$('#'+k).classList.toggle('bad',!!r.e[k]);$('#e'+k[1]).textContent=r.e[k]||''});
+ if(Object.keys(r.e).length){$('#rp').innerHTML='';return}last.pct=o;show('rp',r,()=>addDeal({type:'pct',...last.pct}))}
+function runPack(){const o={name:val('#kn'),total:val('#kt'),packs:val('#kk'),qty:val('#kq'),unit:val('#ku')},r=calcPack(o);
+ [['kt','et'],['kk','ek'],['kq','eq']].forEach(([i,e])=>{$('#'+i).classList.toggle('bad',!!r.e[e]);$('#'+e).textContent=r.e[e]||''});
+ if(Object.keys(r.e).length){$('#rk').innerHTML='';return}last.pack=o;show('rk',r,()=>addDeal({type:'pack',...last.pack}))}
+$('#bp').onclick=runPct;$('#bk').onclick=runPack;
+$$('#pct input').forEach(i=>i.addEventListener('keydown',e=>e.key==='Enter'&&(e.preventDefault(),i.blur(),runPct())));
+$$('#pack input,#pack select').forEach(i=>i.addEventListener('keydown',e=>e.key==='Enter'&&(e.preventDefault(),i.blur(),runPack())));
+
+/* ---------- deals ---------- */
+const calcD=d=>d.type==='pct'?calcPct(d):calcPack(d);
+function persist(){gs&&gs.saveDeals(JSON.stringify(deals.filter(d=>d.custom)))}
+function addDeal(d){deals.unshift({id:Date.now(),custom:1,...d});persist();renderDeals();go('samples');toast('Added with a Custom badge ✨');confetti(innerWidth/2,innerHeight/3)}
+function renderDeals(){const list=deals.filter(d=>filter==='all'||d.type===filter);
+ $('#dl').innerHTML=list.map((d,i)=>{const r=calcD(d);if(r.e&&Object.keys(r.e).length)return'';const a=d.type==='pct'?'pc':'kc';
+ return`<div class="card ${a} dc" style="animation-delay:${i*.07}s"><div style="display:flex;justify-content:space-between;gap:8px"><h3>${esc(d.name||'Unnamed item')}</h3><span><span class="chip">${d.type==='pct'?d.rate+'% off':'B1F1'}</span>${d.custom?' <span class="chip" style="background:var(--lav);color:#fff">Custom</span>':''}</span></div>
+ <div class="rows">${r.rows.map(x=>`<div><span>${x[0]}</span><b>${x[1]}</b></div>`).join('')}<div><span>You save</span><b style="color:var(--deep)">${rm(r.save)}</b></div></div>
+ <button class="btn sm" data-l="${d.id}">⬆ Load</button> ${d.custom?`<button class="btn sm alt" data-x="${d.id}">Remove</button>`:''}</div>`}).join('')||'<div class="card">Nothing here yet.</div>';
+ const t=deals.reduce((s,d)=>{const r=calcD(d);return s+(r.save||0)},0);countUp($('#tot'),t,rm,1800)}
+$('#dl').onclick=e=>{const b=e.target.closest('button');if(!b)return;
+ if(b.dataset.x){deals=deals.filter(d=>d.id!=b.dataset.x);persist();renderDeals()}
+ if(b.dataset.l){const d=deals.find(x=>x.id==b.dataset.l);
+  if(d.type==='pct'){$('#pn').value=d.name;$('#pp').value=d.promo;$('#pr').value=d.rate;$('#pc').value=d.cat;go('pct');runPct()}
+  else{$('#kn').value=d.name;$('#kt').value=d.total;$('#kk').value=d.packs;$('#kq').value=d.qty;$('#ku').value=d.unit;go('pack');runPack()}}};
+$$('.pill').forEach(p=>p.onclick=()=>{$$('.pill').forEach(x=>x.classList.remove('on'));p.classList.add('on');filter=p.dataset.f;renderDeals()});
+
+/* ---------- navigation ---------- */
+const tabs=[['home','🏠','Home'],['pct','🏷️','Percent'],['pack','🎁','B1F1'],['samples','🧺','Samples'],['learn','📖','Learn']];
+$('#nav').innerHTML=tabs.map(t=>`<button data-t="${t[0]}"><span>${t[1]}</span>${t[2]}</button>`).join('');
+function go(t){$$('section').forEach(s=>s.classList.toggle('on',s.id===t));$$('nav button').forEach(b=>b.classList.toggle('on',b.dataset.t===t));scrollTo({top:0,behavior:'smooth'})}
+$('#nav').onclick=e=>{const b=e.target.closest('button');b&&go(b.dataset.t)};
+go('home');renderDeals();
+if(gs)gs.withSuccessHandler(a=>{if(a&&a.length){deals=a.concat(deals);renderDeals()}}).getDeals();
+setTimeout(()=>confetti(innerWidth/2,innerHeight/3),700);
+</script></body></html>
